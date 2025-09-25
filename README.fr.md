@@ -1,6 +1,6 @@
-[Français 🇫🇷](README.fr.md)
+[English 🇬🇧](README.md)
 
-# 📊 Project PHP - Sales and user management
+# 📊 Projet PHP - Gestion des ventes et utilisateurs
 
 Ce projet est une **petite application PHP** utilisant **Twig** comme moteur de template.  
 
