@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/container.css">
+    <link rel="stylesheet" href="/assets/css/sort.css">
+    <link rel="stylesheet" href="/assets/css/button.css">
+    <link rel="stylesheet" href="/assets/css/table.css">
+{% endblock %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<hr>
+
+<form method="get" action="{{ path }}">
+    <input type="hidden" name="search" value="{{ search ?? '' }}">
+    <div class="dropdown">
+        <button type="button" class="dropbtn" onclick="toggleDropdown()">Sort ▾</button>
+        <ul class="dropdown-content" id="dropdownMenu">
+            {% for key, label in sortable_columns %}
+                <li>
+                    <label>
+                        <input type="radio" name="sort" value="{{ label }}"
+                               {% if sort == label %}checked{% endif %}
+                               onchange="this.form.submit()">
+                        {{ label }}
+                    </label>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</form>
+
+<h2>RESULT</h2>
+<div class="section-container">
+{% if data is empty %}
+    <span class="no-action">No data</span>
+{% else %}
+   
+<table>
+    <thead>
+        <tr>
+            {% for header in headers %}
+                <th>{{ header|e }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in data %}
+        <tr data-id="{{ row.id_data|e }}" class="clickable-row">
+            {% for key, value in row %}
+                <td>{{ value|e }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>  
+{% endif %}
+    
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/assets/js/sort.js"></script>
+{% endblock %}

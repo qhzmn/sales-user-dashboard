@@ -1,0 +1,22 @@
+# Dépendances PHP
+/vendor/
+
+# Fichiers perso
+HAZEMANN_Quentin.docx
+HAZEMANN_Quentin.pdf
+
+# Cache et logs
+/cache/
+*.log
+
+# Config locales
+.env
+.env.local
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
